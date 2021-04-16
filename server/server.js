@@ -23,11 +23,14 @@ function calculate(input){
     // if statement to find operator and apply math
     if (input.operator = '+') {
         input.result = Number(input.numberOne) + Number(input.numberTwo);
-    } else if (input.operator = '-') {
+    } 
+    if (input.operator = '-') {
         input.result = Number(input.numberOne) - Number(input.numberTwo);
-    } else if (input.operator = '*') {
+    } 
+    if (input.operator = '*') {
         input.result = Number(input.numberOne) * Number(input.numberTwo);
-    } else if (input.operator = '/') {
+    } 
+    if (input.operator = '/') {
         input.result = Number(input.numberOne) / Number(input.numberTwo);
     }
 }
