@@ -22,7 +22,7 @@ function getAnswer(){
         method: 'GET',
         url: '/calculate',
     })
-        then(function(response){
+        .then(function(response){
             console.log('response from server:', response)
             render(response);
         })
@@ -32,8 +32,14 @@ function getAnswer(){
         })
 }
 
-function render() {
-    $('#answer').empty().append(`SUM OF CALCULATION: ${sum}`);
+function render(response) {
+    // loop thru the calculationHistory array and append each equation to the DOM
+    for(let index of response){
+        $('#history').append(`<li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>`)
+    }
+    
+    // render answer to DOM!
+    $('#answer').empty().append(`${response[response.length -1].result}`);
 }
 
 function calculate(){
@@ -57,7 +63,7 @@ function calculate(){
             alert('Sorry, could not complete task. Try again L8R!');
         })
     
-    render();
+    getAnswer();
 }
 
 // clears number inputs

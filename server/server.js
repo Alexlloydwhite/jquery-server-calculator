@@ -14,24 +14,19 @@ app.listen( PORT, () => {
 })
 
 let calculationHistory = [];
-let sum = 0;
 
 function calculate(input){
-    let num1 = input.numberOne;
-    let num2 = input.numberTwo;
-    let operator = input.operator;
-
-    if (operator = '+') {
-        sum = Number(num1) + Number(num2);
-    } 
-    console.log(sum);
+    if (input.operator = '+') {
+        input.result = Number(input.numberOne) + Number(input.numberTwo);
+    }
+    console.log(input);
 }
 
 
 // TODO - set up get / post 
 app.get('/calculate', (req, res) =>{
-    console.log('request for answer', sum)
-    res.send(sum);
+    console.log('request for answer', calculationHistory)
+    res.send(calculationHistory);
 })
 
 // recieves object from the DOM, sends to calculator!
