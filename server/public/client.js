@@ -17,6 +17,7 @@ function catchOperator() {
     console.log('clicked!', operator);
 }
 
+// gets calculationHistory array from server to use on the DOM
 function getAnswer(){
     $.ajax({
         method: 'GET',
@@ -33,6 +34,8 @@ function getAnswer(){
 }
 
 function render(response) {
+    // empty history to display only current array
+    $('#history').empty();
     // loop thru the calculationHistory array and append each equation to the DOM
     for(let index of response){
         $('#history').append(`<li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>`)
@@ -43,13 +46,14 @@ function render(response) {
 }
 
 function calculate(){
-
+    // create object that captures the inputs
     let calculateInputs = {
         numberOne: Number($('#num1').val()),
         numberTwo: Number($('#num2').val()),
         operator: operator,
     }
 
+    // send object to the server
     $.ajax({
         method: 'POST',
         url: '/calculate',
@@ -63,6 +67,7 @@ function calculate(){
             alert('Sorry, could not complete task. Try again L8R!');
         })
     
+    // display
     getAnswer();
 }
 
