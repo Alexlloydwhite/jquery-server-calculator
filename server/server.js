@@ -13,13 +13,23 @@ app.listen( PORT, () => {
     console.log(`listening on port ${PORT}...`);
 })
 
+// global array to hold history of every claculation send to server
 let calculationHistory = [];
 
 function calculate(input){
+    // log input to comfirm we are in the function
+    console.log(input);
+    
+    // if statement to find operator and apply math
     if (input.operator = '+') {
         input.result = Number(input.numberOne) + Number(input.numberTwo);
+    } else if (input.operator = '-') {
+        input.result = Number(input.numberOne) - Number(input.numberTwo);
+    } else if (input.operator = '*') {
+        input.result = Number(input.numberOne) * Number(input.numberTwo);
+    } else if (input.operator = '/') {
+        input.result = Number(input.numberOne) / Number(input.numberTwo);
     }
-    console.log(input);
 }
 
 
