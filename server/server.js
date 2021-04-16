@@ -18,23 +18,24 @@ let calculationHistory = [];
 
 function calculate(input){
     // log input to comfirm we are in the function
-    console.log(input);
+    console.log('in the calculator:', input);
     
-    // if statement to find operator and apply math
-    if (input.operator = '+') {
-        input.result = Number(input.numberOne) + Number(input.numberTwo);
-    } 
-    if (input.operator = '-') {
-        input.result = Number(input.numberOne) - Number(input.numberTwo);
-    } 
-    if (input.operator = '*') {
-        input.result = Number(input.numberOne) * Number(input.numberTwo);
-    } 
-    if (input.operator = '/') {
-        input.result = Number(input.numberOne) / Number(input.numberTwo);
+    // switch statement performs math based on operator.
+    switch ( input.operator ){
+        case '+':
+            input.result = Number(input.numberOne) + Number(input.numberTwo);
+            break;
+        case '-':
+            input.result = Number(input.numberOne) - Number(input.numberTwo);
+            break;
+        case '*':
+            input.result = Number(input.numberOne) * Number(input.numberTwo);
+            break;
+        case '/':
+            input.result = Number(input.numberOne) / Number(input.numberTwo);
     }
-}
 
+}
 
 // TODO - set up get / post 
 app.get('/calculate', (req, res) =>{
