@@ -6,11 +6,31 @@ function onReady (){
     console.log('JQ');
     $('#equals').on('click', calculate);
     $('#clear').on('click', clearInputs);
-    $('.math').on('click', catchOperator);
+    $('.operator').on('click', catchOperator);
+    $('.button').on('click', catchNumbers);
     getAnswer();
 }
 
+let num1= '';
+let num2= '';
 let operator = '';
+
+function catchNumbers(){
+    let numberClicked = $(this).text();
+    console.log(numberClicked);
+    
+    if ( numberClicked && operator === '' ) {
+        num1 = num1 + numberClicked;
+        console.log(num1);
+        $('.answer').empty();
+    } 
+    else if ( num1 != '' && operator != '') {
+        num2 = num2 + numberClicked
+        console.log(num2);
+    }   
+
+    $('.answer').empty().append(`${num1} ${operator} ${num2}`);
+}
 
 function catchOperator() {
     // assigns operate to the symbal that was clicked
@@ -42,9 +62,11 @@ function render(response) {
     $('#history').empty();
     // loop thru the calculationHistory array and append each equation to the DOM
     for(let index of response){
-        $('#history').append(`<li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>`)
+        $('#history').append(`
+        <li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>
+        `)
         // render answer to DOM!
-        $('#answer').empty().append(`${response[response.length -1].result}`);
+        $('.answer').empty().append(`${response[response.length -1].result}`);
     }
     
 }
@@ -52,8 +74,8 @@ function render(response) {
 function calculate(){
     // create object that captures the inputs
     let calculateInputs = {
-        numberOne: Number($('#num1').val()),
-        numberTwo: Number($('#num2').val()),
+        numberOne: num1, 
+        numberTwo: num2,
         operator: operator,
     }
 
@@ -75,11 +97,15 @@ function calculate(){
     
     // sends a get request to server for calculation results
     getAnswer();
+    clearInputs();
 }
 
 // clears number inputs
 function clearInputs() {
     console.log('Clicked! Clearing Inputs..')
-    $('#num1').val('');
-    $('#num2').val('');
+    num1 = '';
+    num2 = '';
+    operator = '';
+    $('.answer').empty();
 }
+

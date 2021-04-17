@@ -15,28 +15,43 @@
     </header>
     
     <main>
+        <section id="Calculator">
+            <div class="calc-row">
+                <div class="answer"></div>
+            </div>
+            <div class="calc-row">
+                <button class ="operator" id="plus">+</button>
+                <button class ="operator" id="minus">-</button>
+                <button class ="operator" id="multiply">*</button>
+                <button class ="operator" id="divide">/</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="7">7</button>
+                <button class="button" id="8">8</button>
+                <button class="button" id="9">9</button>
+                <button class="button" id="zero">0</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="4">4</button>
+                <button class="button" id="5">5</button>
+                <button class="button" id="6">6</button>
+                <button class="button" id=".">.</button>
+            </div>
+            <div class="calc-row">
+                <button class="button" id="1">1</button>
+                <button class="button" id="2">2</button>
+                <button class="button" id="3">3</button>
+                <button id="clear">C</button>
+            </div>
+            <div class="calc-row">
+                <button id="equals">=</button>
+            </div>
+        </section>
         
-        <section id="input">
-            <input id="num1" type="number">
-            <button class ="math" id="plus">+</button>
-            <button class ="math" id="minus">-</button>
-            <button class ="math" id="multiply">*</button>
-            <button class ="math" id="divide">/</button>
-            <input id="num2" type="number">
-            <button id="equals">=</button>
-            <button id="clear">C</button>
-        </section>
-
-        <section id="CalculatorPutput">
-            <span id="answer"></span>
-        </section>
-
         <section id="historyOutput">
-            <ul id="history">
-
-            </ul>
+            <h5>Calculator History: </h5>
+            <ul id="history"></ul>
         </section>
-    
     </main>
 </body>
 </html>
