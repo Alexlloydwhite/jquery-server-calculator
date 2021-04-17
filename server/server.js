@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 // create instanc of express web server 
 const app = express ();
+
 // set up public folders to send files to client
 app.use(bodyParser.urlencoded({extended:true}));
 app.use( express.static( 'server/public' ) );
@@ -37,7 +38,7 @@ function calculate(input){
 
 }
 
-// TODO - set up get / post 
+// sends calculationHistory array to client
 app.get('/calculate', (req, res) =>{
     console.log('request for answer', calculationHistory)
     res.send(calculationHistory);
@@ -46,13 +47,13 @@ app.get('/calculate', (req, res) =>{
 // recieves object from the DOM, sends to calculator!
 app.post('/calculate', (req, res) =>{
     let newCalculation = req.body;
-    console.log('reciecing new calculation', newCalculation);
+    console.log('recieving new calculation', newCalculation);
+    
     // save the new calculation to later display in history
     calculationHistory.push(newCalculation);
+    
     // use new calculation object to perform math!
     calculate(newCalculation)
+    // sending status 201 aka all good!
     res.sendStatus(201);
 })
-
-
-
