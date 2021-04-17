@@ -7,6 +7,7 @@ function onReady (){
     $('#equals').on('click', calculate);
     $('#clear').on('click', clearInputs);
     $('.math').on('click', catchOperator);
+    getAnswer();
 }
 
 let operator = '';
@@ -39,10 +40,10 @@ function render(response) {
     // loop thru the calculationHistory array and append each equation to the DOM
     for(let index of response){
         $('#history').append(`<li>${index.numberOne} ${index.operator} ${index.numberTwo} = ${index.result}</li>`)
+        // render answer to DOM!
+        $('#answer').empty().append(`${response[response.length -1].result}`);
     }
     
-    // render answer to DOM!
-    $('#answer').empty().append(`${response[response.length -1].result}`);
 }
 
 function calculate(){
