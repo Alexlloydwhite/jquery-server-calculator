@@ -8,7 +8,7 @@ header {
     padding: 1rem;
 }
 main{
-    width: 40%;
+    width: 50%;
     margin: auto;
 }
 button{
@@ -25,6 +25,7 @@ button{
 .answer{
     background-color: #a2af77;
     padding: 10px;
+    height: 25px;
     margin-bottom: 15px;
     margin-top: 9px;
     margin-left: 5px;
@@ -44,7 +45,6 @@ button{
 #historyOutput{
     float: right;
     background-color: #b4353c;
-    border-radius: 18px;
     padding: 20px;
     margin-top: 0;
 }

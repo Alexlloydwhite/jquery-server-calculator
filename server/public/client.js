@@ -10,7 +10,7 @@ function onReady (){
     $('.operator').on('click', catchOperator);
     // on click of a number, catch the number and assign it to the object (equation)
     $('.button').on('click', catchNumbers);
-    // allows the page to not clear information on refresh
+    // allows the page to not clear information on refresh,
     getAnswer();
 }
 
@@ -26,10 +26,10 @@ function catchNumbers(){
     // checks if there is a click, stops check when an operator is clicked
     if ( numberClicked && operator === '' ) {
         num1 = num1 + numberClicked;
-        $('.answer').empty();
+        $('.answer').empty()
     } 
     // if num1 has a value and operator has a value, start building num2
-    else if ( num1 != '' && operator != '') {
+    if ( num1 != '' && operator != '') {
         num2 = num2 + numberClicked
     }   
 
@@ -41,6 +41,7 @@ function catchOperator() {
     // assigns operate to the symbal that was clicked
     operator = $(this).text();
     console.log('clicked!', operator);
+    $('.answer').empty().append(`${num1} ${operator} ${num2}`)
 }
 
 // gets calculationHistory array from server to use on the DOM
