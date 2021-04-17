@@ -1,34 +1,39 @@
-console.log('JS');
-
 $(onReady);
 
 function onReady (){
     console.log('JQ');
+    // on click of equal button, send the object (equation) to the server to calculate
     $('#equals').on('click', calculate);
+    // on click of 'C' reset the object, clear the DOM area that display current calculation.
     $('#clear').on('click', clearInputs);
+    // on click of calculator operator, assign that operator to the object (equation)
     $('.operator').on('click', catchOperator);
+    // on click of a number, catch the number and assign it to the object (equation)
     $('.button').on('click', catchNumbers);
+    // allows the page to not clear information on refresh
     getAnswer();
 }
 
+// ! GLOBAL VARIABLES !
 let num1= '';
 let num2= '';
 let operator = '';
 
 function catchNumbers(){
+    // jQuery finds the click and assigns it to variable
     let numberClicked = $(this).text();
-    console.log(numberClicked);
     
+    // checks if there is a click, stops check when an operator is clicked
     if ( numberClicked && operator === '' ) {
         num1 = num1 + numberClicked;
-        console.log(num1);
         $('.answer').empty();
     } 
+    // if num1 has a value and operator has a value, start building num2
     else if ( num1 != '' && operator != '') {
         num2 = num2 + numberClicked
-        console.log(num2);
     }   
 
+    // append the clicks to the DOM
     $('.answer').empty().append(`${num1} ${operator} ${num2}`);
 }
 
